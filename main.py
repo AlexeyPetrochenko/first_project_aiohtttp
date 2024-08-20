@@ -16,8 +16,8 @@ def setup_routes(application):
 
 
 def setup_accessor(application):
-    application.db = PostgresAccessor()
-    application.db.setup(application)
+    application['db'] = PostgresAccessor()
+    application['db'].setup(application)
 
 
 def setup_external_libraries(application: web.Application) -> None:

@@ -1,5 +1,7 @@
 import aiohttp_jinja2
 from aiohttp import web
+from datetime import datetime
+
 from app.forum.models import Message
 
 
@@ -20,3 +22,21 @@ class ListMessageViews(web.View):
             })
 
         return web.json_response(data={'messages': messages_data})
+
+
+class CreateMessageView(web.View):
+    async def post(self):
+        data = await self.request.json()
+        message = await self.request.app["db"].message.create(
+            text=data['text'],
+            created=datetime.now(),
+        )
+        return web.json_response(
+            data={
+                'message': {
+                    'id': message.id,
+                    'text': message.text,
+                    'created': str(message.created),
+                },
+            },
+        )

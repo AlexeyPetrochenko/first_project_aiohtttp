@@ -1,8 +1,6 @@
 aiohttp==3.7.3
 aiohttp-jinja2==1.4.2
 alembic==1.13.2
-async-timeout==3.0.1
-asyncpg==0.29.0
 attrs==24.2.0
 chardet==3.0.4
 gino==1.0.1
